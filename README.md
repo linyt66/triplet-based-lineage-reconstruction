@@ -89,7 +89,7 @@ python algorithms/tmc.py \
 
 ### 3. Validate theoretical accuracy bounds
 ```
-python experiments/validate_bounds.py
+python notebooks/validate_bounds.ipynb
 ```
 
 # License
