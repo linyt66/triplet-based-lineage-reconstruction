@@ -1,5 +1,7 @@
 # Lineage Triplet Theory
 
+The analysis makes use of the Cassiopeia package for lineage tracing found here.
+
 This repository contains the code and simulation framework accompanying the manuscript:
 
 **Fundamental Limits on Phylogeny Inference from Single-Cell Lineage Tracing**  
