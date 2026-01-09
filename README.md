@@ -50,4 +50,55 @@ All code is designed to reproduce the simulations and figures reported in the ma
 │
 ├── requirements.txt
 └── README.md
+```
+## Installation
 
+### Requirements
+
+- Python ≥ 3.8  
+- NumPy  
+- SciPy  
+- NetworkX  
+- Matplotlib  
+
+Install all dependencies using:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Usage
+
+### 1. Simulate lineage trees and barcodes
+
+```bash
+python simulation/simulate_barcodes.py \
+    --n_cells 256 \
+    --n_sites 200 \
+    --lambda_mut 0.25 \
+    --p_miss 0.1
+```
+### 2. Run Triplet Max-Cut reconstruction
+```bash
+python algorithms/tmc.py \
+    --input simulated_data.pkl \
+    --output inferred_tree.pkl
+```
+
+### 3. Validate theoretical accuracy bounds
+```
+python experiments/validate_bounds.py
+```
+
+# License
+
+This project is released under the MIT License.
+
+---
+
+#Contact
+
+Yuting Lin,
+School of Mathematics,
+Sun Yat-sen University,
+Email: linyt66@mail2.sysu.edu.cn,
