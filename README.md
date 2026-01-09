@@ -1,6 +1,6 @@
 # Lineage Triplet Theory
 
-The analysis makes use of the Cassiopeia package for lineage tracing found here.
+The analysis makes use of the Cassiopeia package for lineage tracing found [here](https://github.com/YosefLab/Cassiopeia).
 
 This repository contains the code and simulation framework accompanying the manuscript:
 
