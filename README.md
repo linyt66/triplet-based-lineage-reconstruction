@@ -5,7 +5,6 @@ The analysis makes use of the Cassiopeia package for lineage tracing found [here
 This repository contains the code and simulation framework accompanying the manuscript:
 
 **Fundamental Limits on Phylogeny Inference from Single-Cell Lineage Tracing**  
-*(submitted to Systematic Biology)*
 
 This project studies the theoretical limits and optimal experimental design for reconstructing lineage trees from genetically encoded molecular recording data, with a focus on triplet-based inference and Max-Cut–based reconstruction algorithms.
 
@@ -33,8 +32,7 @@ All code is designed to reproduce the simulations and figures reported in the ma
 │   └── parameter_scaling.py         # Scaling laws for design parameters
 │
 ├── simulation/
-│   ├── generate_tree.py             # Random lineage tree generation
-│   ├── simulate_barcodes.py         # CRISPR-style barcode evolution
+│   ├── generate_tree.py             # Random lineage tree generation with CRISPR-style barcode evolution
 │   └── noise_models.py              # Missing data and shared-edit models
 │
 ├── algorithms/
