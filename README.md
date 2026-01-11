@@ -71,19 +71,7 @@ pip install -r requirements.txt
 
 ### 1. Simulate lineage trees and barcodes
 
-```bash
-python simulation/simulate_barcodes.py \
-    --n_cells 256 \
-    --n_sites 200 \
-    --lambda_mut 0.25 \
-    --p_miss 0.1
-```
 ### 2. Run Triplet Max-Cut reconstruction
-```bash
-python algorithms/tmc.py \
-    --input simulated_data.pkl \
-    --output inferred_tree.pkl
-```
 
 ### 3. Validate theoretical accuracy bounds
 ```
