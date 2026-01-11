@@ -40,7 +40,7 @@ All code is designed to reproduce the simulations and figures reported in the ma
 │   ├── oto.py                       # One-Time Optimization (OTO)
 │   └── baselines.py                 # UPGMA, NJ, greedy heuristics
 │
-├── experiments/
+├── notebooks/
 │   ├── validate_bounds.py           # Reproduces Fig. 5 (theoretical vs empirical)
 │   ├── parameter_sensitivity.py     # Scaling with λ, ℓ_min, p_miss, p_share
 │   └── rf_distance_eval.py          # Robinson–Foulds distance analysis
