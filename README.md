@@ -1,4 +1,4 @@
-# Lineage Triplet Theory
+# Code and Simulations for Triplet-Based Lineage Inference
 
 The analysis makes use of the Cassiopeia package for lineage tracing found [here](https://github.com/YosefLab/Cassiopeia).
 
@@ -84,7 +84,7 @@ This project is released under the MIT License.
 
 ---
 
-#Contact
+#  Contact
 
 Yuting Lin,
 School of Mathematics,
