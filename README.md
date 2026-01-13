@@ -1,25 +1,30 @@
+
+
 # Code and Simulations for Triplet-Based Lineage Inference
 
-The analysis makes use of the Cassiopeia package for lineage tracing found [here](https://github.com/YosefLab/Cassiopeia).
+This repository provides code and simulation tools for studying triplet-based lineage tree reconstruction from molecular recording data.  
+The analysis makes use of the Cassiopeia package for lineage tracing, available [here](https://github.com/YosefLab/Cassiopeia).
 
-This repository contains the code and simulation framework accompanying the manuscript:
+This codebase accompanies the manuscript:
 
-**Theoretical Limits and Design Principles for Reliable Molecular Lineage Recorders**  
+**Theoretical Limits and Design Principles for Reliable Molecular Lineage Recorders**
 
-This project studies the theoretical limits and optimal experimental design for reconstructing lineage trees from genetically encoded molecular recording data, with a focus on triplet-based inference and Max-Cut–based reconstruction algorithms.
+The project focuses on theoretical analysis and simulation-based evaluation of triplet-based inference methods, including Max-Cut–based reconstruction algorithms, under realistic noise and sparsity constraints.
 
 ---
 
 ## Overview
 
-Genetically encoded molecular recorders convert lineage history into heritable molecular barcodes that accumulate changes over time. However, these recordings are sparse, noisy, and constrained by biological and technical limitations. This repository provides:
+Genetically encoded molecular recorders encode lineage history into heritable molecular barcodes that accumulate edits over time. In practice, these barcodes are sparse, noisy, and subject to biological and technical constraints, which limits reconstruction accuracy.
 
-- A theoretical framework linking local triplet error rates to global tree reconstruction accuracy  
-- Provable bounds on reconstruction accuracy and minimum barcode length  
-- Simulation code validating theoretical predictions under realistic noise models  
-- Implementations of Triplet Max-Cut (TMC) and baseline reconstruction algorithms  
+This repository provides:
 
-All code is designed to reproduce the simulations and figures reported in the manuscript.
+- A theoretical framework relating local triplet error rates to global lineage tree reconstruction accuracy  
+- Analytical bounds on reconstruction accuracy and minimum barcode length under simplified noise models  
+- Simulation code for validating theoretical predictions under realistic recording noise  
+- Implementations of Triplet Max-Cut (TMC) and baseline lineage reconstruction algorithms  
+
+All code is intended to reproduce the simulations and figures reported in the accompanying manuscript.
 
 ---
 
@@ -29,21 +34,21 @@ All code is designed to reproduce the simulations and figures reported in the ma
 .
 ├── theory/
 │   ├── triplet_error_bounds.py      # Numerical evaluation of theoretical bounds
-│   └── parameter_scaling.py         # Scaling laws for design parameters
+│   └── parameter_scaling.py         # Scaling behavior of design parameters
 │
 ├── simulation/
-│   ├── generate_tree.py             # Random lineage tree generation with CRISPR-style barcode evolution
-│   └── noise_models.py              # Missing data and shared-edit models
+│   ├── generate_tree.py             # Lineage tree simulation with barcode evolution
+│   └── noise_models.py              # Missing data and shared-edit noise models
 │
 ├── algorithms/
 │   ├── tmc.py                       # Triplet Max-Cut (TMC) implementation
 │   ├── oto.py                       # One-Time Optimization (OTO)
-│   └── baselines.py                 # UPGMA, NJ, greedy heuristics
+│   └── baselines.py                 # UPGMA, NJ, and greedy heuristics
 │
 ├── notebooks/
-│   ├── validate_bounds.py           # Reproduces Fig. 5 (theoretical vs empirical)
-│   ├── parameter_sensitivity.py     # Scaling with λ, ℓ_min, p_miss, p_share
-│   └── rf_distance_eval.py          # Robinson–Foulds distance analysis
+│   ├── validate_bounds.ipynb        # Comparison of theoretical and empirical error rates
+│   ├── parameter_sensitivity.ipynb  # Scaling with λ, ℓ_min, p_miss, p_share
+│   └── rf_distance_eval.ipynb       # Robinson–Foulds distance evaluation
 │
 ├── figures/
 │   └── *.pdf                        # Generated figures
@@ -51,6 +56,7 @@ All code is designed to reproduce the simulations and figures reported in the ma
 ├── requirements.txt
 └── README.md
 ```
+
 ## Installation
 
 ### Requirements
@@ -74,6 +80,7 @@ pip install -r requirements.txt
 ### 2. Run Triplet Max-Cut reconstruction
 
 ### 3. Validate theoretical accuracy bounds
+
 ```
 python notebooks/validate_bounds.ipynb
 ```
