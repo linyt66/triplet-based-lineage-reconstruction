@@ -4,7 +4,7 @@ The analysis makes use of the Cassiopeia package for lineage tracing found [here
 
 This repository contains the code and simulation framework accompanying the manuscript:
 
-**Fundamental Limits on Phylogeny Inference from Single-Cell Lineage Tracing**  
+**Theoretical Limits and Design Principles for Reliable Molecular Lineage Recorders**  
 
 This project studies the theoretical limits and optimal experimental design for reconstructing lineage trees from genetically encoded molecular recording data, with a focus on triplet-based inference and Max-Cut–based reconstruction algorithms.
 
