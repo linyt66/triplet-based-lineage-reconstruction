@@ -40,7 +40,10 @@ All code is intended to reproduce the simulations and figures reported in the ac
 │   ├── generate_tree.py             # Lineage tree simulation with barcode evolution
 │
 ├── results/
-│   └── *.csv                        # UPGMA, NJ, and greedy evaluation
+│   ├── rf_scores_with_missing.csv         # UPGMA, NJ, and greedy evaluation
+│   └── rf_scores_without_missing.csv      # UPGMA, NJ, and greedy evaluation
+│   └── triplet_scores_with_missing.csv    # UPGMA, NJ, and greedy evaluation
+│   └── triplet_scores_without_missing.csv   # UPGMA, NJ, and greedy evaluation
 │ 
 ├── algorithms/
 │   ├── tmc.py                       # Triplet Max-Cut (TMC) implementation
@@ -50,7 +53,8 @@ All code is intended to reproduce the simulations and figures reported in the ac
 ├── notebooks/
 │   ├── validate_bounds.ipynb        # Comparison of theoretical and empirical error rates
 │   ├── parameter_sensitivity.ipynb  # Scaling with λ, ℓ_min, p_miss, p_share
-│   └── rf_distance_eval.ipynb       # Robinson–Foulds distance evaluation
+│   └── violin_plot.ipynb       # Robinson–Foulds distance evaluation
+│   └── ploy_style.py       # Robinson–Foulds distance evaluation
 │
 ├── figures/
 │   └── *.pdf                        # Generated figures
