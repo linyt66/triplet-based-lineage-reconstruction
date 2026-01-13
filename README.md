@@ -38,8 +38,10 @@ All code is intended to reproduce the simulations and figures reported in the ac
 │
 ├── simulation/
 │   ├── generate_tree.py             # Lineage tree simulation with barcode evolution
-│   └── noise_models.py              # Missing data and shared-edit noise models
 │
+├── results/
+│   └── *.csv                        # UPGMA, NJ, and greedy evaluation
+│ 
 ├── algorithms/
 │   ├── tmc.py                       # Triplet Max-Cut (TMC) implementation
 │   ├── oto.py                       # One-Time Optimization (OTO)
