@@ -3,7 +3,7 @@
 # Code and Simulations for Triplet-Based Lineage Inference
 
 This repository provides code and simulation tools for studying triplet-based lineage tree reconstruction from molecular recording data.  
-The analysis makes use of the Cassiopeia package for lineage tracing, available [here](https://github.com/YosefLab/Cassiopeia).
+This project uses the Cassiopeia lineage tracing framework, which is licensed under the MIT License by Yosef Lab. The analysis makes use of the Cassiopeia package for lineage tracing, available [here](https://github.com/YosefLab/Cassiopeia).
 
 This codebase accompanies the manuscript:
 
