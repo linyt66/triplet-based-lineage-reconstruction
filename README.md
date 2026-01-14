@@ -33,31 +33,32 @@ All code is intended to reproduce the simulations and figures reported in the ac
 ```text
 .
 ├── theory/
-│   ├── parameter_scaling.py         # Scaling behavior of design parameters
+│   └── parameter_scaling.py              # Scaling laws for sample complexity and design parameters
 │
 ├── results/
-│   ├── rf_scores_with_missing.csv         # UPGMA, NJ, and greedy evaluation
-│   └── rf_scores_without_missing.csv      # UPGMA, NJ, and greedy evaluation
-│   └── triplet_scores_with_missing.csv    # UPGMA, NJ, and greedy evaluation
-│   └── triplet_scores_without_missing.csv   # UPGMA, NJ, and greedy evaluation
-│ 
+│   ├── rf_scores_with_missing.csv        # RF distances for baseline methods with missing data
+│   ├── rf_scores_without_missing.csv     # RF distances for baseline methods without missing data
+│   ├── triplet_scores_with_missing.csv   # Triplet accuracy under missing data
+│   └── triplet_scores_without_missing.csv# Triplet accuracy without missing data
+│
 ├── utilities/
-│   ├── algorithm.py                       # Triplet Max-Cut (TMC) implementation
-│   ├── plot_style.py                       # One-Time Optimization (OTO)
-│   ├── generate_tree.py                       # Lineage tree simulation with barcode evolution
-│   └── simulation_score.py                 # UPGMA, NJ, and greedy heuristics
+│   ├── algorithm.py                     # Triplet-based reconstruction algorithms (TMC and variants)
+│   ├── plot_style.py                    # Plotting utilities and shared figure style
+│   ├── generate_tree.py                 # Lineage tree and barcode simulation utilities(from cassiopeia)
+│   └── simulation_score.py              # Evaluation metrics for tree and triplet reconstruction
 │
 ├── notebooks/
-│   ├── validate_bounds.ipynb        # Comparison of theoretical and empirical error rates
-│   ├── parameter_sensitivity.ipynb  # Scaling with λ, ℓ_min, p_miss, p_share
-│   └── violin_plot.ipynb       # Robinson–Foulds distance evaluation
-│   └── ploy_style.py       # Robinson–Foulds distance evaluation
+│   ├── validate_bounds.ipynb             # Empirical validation of theoretical accuracy bounds
+│   ├── parameter_sensitivity.ipynb       # Sensitivity analysis over design parameters
+│   ├── violin_plot.ipynb                 # Distributional analysis of reconstruction errors
+│   └── plot_style.py                     # Notebook-specific plotting configuration
 │
 ├── figures/
-│   └── *.pdf                        # Generated figures
+│   └── *.pdf                             # Figures generated from notebooks
 │
 ├── requirements.txt
 └── README.md
+
 ```
 
 ## Installation
