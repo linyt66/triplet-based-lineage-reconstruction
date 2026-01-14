@@ -1,8 +1,8 @@
 
-"""This file stores the utilities used in the simulations of the Threshold and 
-Bottom-Up Algorithms. Requires the Cassiopeia software package: 
+"""This file requires the Cassiopeia software package: 
 https://github.com/YosefLab/Cassiopeia."""
-
+# Copyright (c) 2022 Yosef Lab
+# Licensed under the MIT License
 from typing import Dict, Tuple
 import networkx as nx
 import copy
