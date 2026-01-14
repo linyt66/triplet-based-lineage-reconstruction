@@ -33,11 +33,7 @@ All code is intended to reproduce the simulations and figures reported in the ac
 ```text
 .
 ├── theory/
-│   ├── triplet_error_bounds.py      # Numerical evaluation of theoretical bounds
-│   └── parameter_scaling.py         # Scaling behavior of design parameters
-│
-├── simulation/
-│   ├── generate_tree.py             # Lineage tree simulation with barcode evolution
+│   ├── parameter_scaling.py         # Scaling behavior of design parameters
 │
 ├── results/
 │   ├── rf_scores_with_missing.csv         # UPGMA, NJ, and greedy evaluation
@@ -45,10 +41,11 @@ All code is intended to reproduce the simulations and figures reported in the ac
 │   └── triplet_scores_with_missing.csv    # UPGMA, NJ, and greedy evaluation
 │   └── triplet_scores_without_missing.csv   # UPGMA, NJ, and greedy evaluation
 │ 
-├── algorithms/
-│   ├── tmc.py                       # Triplet Max-Cut (TMC) implementation
-│   ├── oto.py                       # One-Time Optimization (OTO)
-│   └── baselines.py                 # UPGMA, NJ, and greedy heuristics
+├── utilities/
+│   ├── algorithm.py                       # Triplet Max-Cut (TMC) implementation
+│   ├── plot_style.py                       # One-Time Optimization (OTO)
+│   ├── generate_tree.py                       # Lineage tree simulation with barcode evolution
+│   └── simulation_score.py                 # UPGMA, NJ, and greedy heuristics
 │
 ├── notebooks/
 │   ├── validate_bounds.ipynb        # Comparison of theoretical and empirical error rates
