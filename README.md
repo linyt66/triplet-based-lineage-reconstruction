@@ -188,24 +188,6 @@ figures/
 
 ---
 
-# 📝 Citation
-
-If you find this code or the accompanying theoretical framework useful in your research, please cite:
-
-```bibtex
-@article{Author2026Theoretical,
-  title={Theoretical Limits and Experimental Design Principles for Single-Cell Molecular Lineage Recording},
-  author={Your Name and Co-authors},
-  journal={Journal Name},
-  year={2026},
-  doi={10.xxxx/xxxxxx}
-}
-```
-
-> **Note:** Citation information will be updated once the manuscript is formally published.
-
----
-
 # 📄 License
 
 This project is released under the **MIT License**.
