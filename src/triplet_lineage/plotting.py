@@ -1,7 +1,6 @@
 """Publication plotting defaults used by the manuscript figures."""
 
-import numpy as np
-import matplotlib.pyplot as plt
+import math
 
 
 COLORS = {
@@ -16,6 +15,8 @@ COLORS = {
 
 def configure_journal_style() -> None:
     """Apply compact, vector-friendly matplotlib defaults."""
+    import matplotlib.pyplot as plt
+
     plt.rcParams.update({
         "savefig.format": "pdf",
         "figure.dpi": 300,
@@ -77,5 +78,5 @@ def configure_journal_style() -> None:
 def log10_formatter(x, pos=None) -> str:
     """Format positive log-scale ticks as base-10 exponents."""
     if x > 0:
-        return f"{int(np.log10(x))}"
+        return f"{int(math.log10(x))}"
     return ""

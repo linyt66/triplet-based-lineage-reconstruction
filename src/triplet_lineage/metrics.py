@@ -1,15 +1,18 @@
 """Evaluation metrics for triplet-based lineage reconstruction."""
 
-from typing import Tuple
+from __future__ import annotations
 
-import cassiopeia.critique as critique
-import cassiopeia.data as data
-import networkx as nx
-import numpy as np
+from typing import TYPE_CHECKING, Tuple
+
+if TYPE_CHECKING:
+    import cassiopeia.data as data
+    import networkx as nx
 
 
 def find_triplet_structure(triplet: Tuple[str, str, str], tree: nx.DiGraph) -> str:
     """Return the resolved ingroup of a rooted triplet, or '-' for a tie."""
+    import networkx as nx
+
     a, b, c = triplet
 
     ancestors = {
@@ -34,6 +37,8 @@ def calculate_triplets_correct(
     n_samples: int = 5000,
 ) -> float:
     """Estimate the fraction of randomly sampled triplets resolved correctly."""
+    import numpy as np
+
     ground_topology = ground_tree.get_tree_topology()
     leaves = list(ground_tree.leaves)
 
@@ -62,6 +67,8 @@ def robinson_foulds_score(
     recon_tree: data.CassiopeiaTree,
 ) -> bool:
     """Return True when the Robinson-Foulds distance is zero."""
+    import cassiopeia.critique as critique
+
     rf_distance, _ = critique.compare.robinson_foulds(ground_tree, recon_tree)
     return rf_distance == 0
 
@@ -79,6 +86,9 @@ def calculate_rf_for_maxcut(
     recon_tree: nx.DiGraph,
 ) -> Tuple[float, float]:
     """Compute raw and normalized RF distance for a NetworkX TMC tree."""
+    import cassiopeia.critique as critique
+    import cassiopeia.data as data
+
     cassiopeia_recon = data.CassiopeiaTree(tree=recon_tree)
     rf_distance, rf_max = critique.compare.robinson_foulds(
         ground_tree,

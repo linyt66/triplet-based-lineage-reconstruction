@@ -1,6 +1,6 @@
 # Triplet-Based Lineage Reconstruction
 
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Paper](https://img.shields.io/badge/Paper-Pending_Publication-green.svg)](#)
 
@@ -73,6 +73,12 @@ Alternatively, install the pinned runtime dependencies directly:
 pip install -r requirements.txt
 ```
 
+For development and validation, install the optional test dependency:
+
+```bash
+pip install -e ".[dev]"
+```
+
 ## Code Modules
 
 - `triplet_lineage.simulation`: complete binary and asynchronous topology
@@ -106,6 +112,25 @@ Recommended reproduction order:
 
 The precomputed CSV files in `results/` are included so that plotting notebooks
 can be run without repeating the full simulation sweep.
+
+## Testing
+
+Run the lightweight test suite from the repository root:
+
+```bash
+python -m unittest discover -s tests
+```
+
+The tests cover package import behavior, theoretical helper functions, plotting
+utilities, and the TMC triplet graph construction. Tests that require optional
+scientific dependencies are skipped automatically when those dependencies are not
+installed.
+
+If `pytest` is installed, the same tests can also be run with:
+
+```bash
+pytest
+```
 
 ## License
 

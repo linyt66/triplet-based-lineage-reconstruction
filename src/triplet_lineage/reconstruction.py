@@ -1,22 +1,24 @@
 """Triplet-based and baseline lineage reconstruction routines."""
 
-from typing import Iterable, List, Sequence, Set, Tuple
+from __future__ import annotations
 
-import cassiopeia.data as data
+from typing import TYPE_CHECKING, Iterable, List, Sequence, Set, Tuple
+
 import networkx as nx
 import numpy as np
-from cassiopeia.solver import dissimilarity_functions
-from cassiopeia.solver.PercolationSolver import PercolationSolver
-from cassiopeia.solver.SharedMutationJoiningSolver import SharedMutationJoiningSolver
-from cassiopeia.solver.VanillaGreedySolver import VanillaGreedySolver
 
-import cvxgraphalgs as cvxgr
+if TYPE_CHECKING:
+    import cassiopeia.data as data
 
 Triplet = Tuple[str, str, str]
 
 
 def percolation_solve(tree: data.CassiopeiaTree) -> data.CassiopeiaTree:
     """Reconstruct a tree using Cassiopeia's percolation solver."""
+    import cassiopeia.data as data
+    from cassiopeia.solver.PercolationSolver import PercolationSolver
+    from cassiopeia.solver.VanillaGreedySolver import VanillaGreedySolver
+
     cm = tree.character_matrix.astype(int)
     recon_tree = data.CassiopeiaTree(
         character_matrix=cm,
@@ -30,6 +32,10 @@ def percolation_solve(tree: data.CassiopeiaTree) -> data.CassiopeiaTree:
 
 def shared_mutation_solve(tree: data.CassiopeiaTree) -> data.CassiopeiaTree:
     """Reconstruct a tree using Shared Mutation Joining."""
+    import cassiopeia.data as data
+    from cassiopeia.solver import dissimilarity_functions
+    from cassiopeia.solver.SharedMutationJoiningSolver import SharedMutationJoiningSolver
+
     cm = tree.character_matrix.astype(int)
     recon_tree = data.CassiopeiaTree(
         character_matrix=cm,
@@ -80,6 +86,8 @@ def construct_triplet_graph(triplets: Iterable[Triplet]) -> nx.Graph:
 
 def gw_partition(triplets: Iterable[Triplet]) -> Tuple[Set[str], Set[str]]:
     """Partition leaves with the Goemans-Williamson SDP relaxation."""
+    import cvxgraphalgs as cvxgr
+
     graph = construct_triplet_graph(triplets)
     cut = cvxgr.algorithms.goemans_williamson_weighted(graph)
     return set(cut.left), set(cut.right)
@@ -97,6 +105,8 @@ def build_tree_from_triplets(
     triplets: Iterable[Triplet],
 ) -> nx.DiGraph:
     """Build the TMC reconstruction from a triplet partition."""
+    import cassiopeia.data as data
+
     left, right = gw_partition(triplets)
     cm = tree.character_matrix
 

@@ -7,7 +7,7 @@ name = "triplet-based-lineage-reconstruction"
 version = "0.1.0"
 description = "Code and simulations for triplet-based molecular lineage reconstruction."
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
     {name = "Yuting Lin"}
@@ -22,6 +22,11 @@ dependencies = [
     "tqdm>=4.60",
     "cassiopeia-lineage>=2.0",
     "cvxgraphalgs",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
 ]
 
 [tool.setuptools.packages.find]
