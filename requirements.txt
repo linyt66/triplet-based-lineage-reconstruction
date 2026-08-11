@@ -11,3 +11,5 @@ networkx>=2.6
 tqdm>=4.60
 
 cassiopeia-lineage>=2.0
+cvxgraphalgs
+jupyter
