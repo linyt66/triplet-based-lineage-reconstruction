@@ -106,8 +106,7 @@ Recommended reproduction order:
    in `results/`.
 2. Run `notebooks/validate_bounds.ipynb` to compare empirical accuracy with the
    OTO and ITO theoretical limits.
-3. Run `notebooks/violin_plot.ipynb`,
-   `notebooks/parameter_sensitivity.ipynb`, and `notebooks/figure-6.ipynb` to
+3. Run `notebooks/violin_plot.ipynb` and `notebooks/figure-6.ipynb` to
    regenerate the publication figures in `figures/`.
 
 The precomputed CSV files in `results/` are included so that plotting notebooks

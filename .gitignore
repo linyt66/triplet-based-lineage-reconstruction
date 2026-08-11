@@ -9,3 +9,8 @@ venv/
 build/
 dist/
 *.egg-info/
+.vscode/
+.idea/
+.env
+*.log
+simulation_results_onetree.txt
