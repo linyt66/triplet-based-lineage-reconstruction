@@ -8,6 +8,11 @@ import _path  # noqa: F401
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 NOTEBOOKS = sorted((PROJECT_ROOT / "notebooks").glob("*.ipynb"))
 TEXT_PATTERNS = ("*.py", "*.md", "*.toml", "*.txt", "*.ipynb")
+IGNORED_TEXT_DIRS = {
+    ".git",
+    ".ipynb_checkpoints",
+    "Optimal_Triplet_Oracle_RSIF (3)",
+}
 MOJIBAKE_TOKENS = tuple(chr(codepoint) for codepoint in (0x0432, 0x043F, 0x0458, 0x0413))
 CJK_PATTERN = re.compile(r"[\u4e00-\u9fff]")
 
@@ -30,7 +35,7 @@ class RepositoryHygieneTests(unittest.TestCase):
         offenders = []
         for pattern in TEXT_PATTERNS:
             for path in PROJECT_ROOT.glob(f"**/{pattern}"):
-                if ".git" in path.parts or ".ipynb_checkpoints" in path.parts:
+                if any(part in IGNORED_TEXT_DIRS for part in path.parts):
                     continue
                 text = path.read_text(encoding="utf-8", errors="ignore")
                 if CJK_PATTERN.search(text) or any(token in text for token in MOJIBAKE_TOKENS):

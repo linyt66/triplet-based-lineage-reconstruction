@@ -12,8 +12,8 @@ publication figures for the manuscript:
 
 The project studies triplet-based inference for molecular lineage recording data.
 It introduces the Optimal Triplet Oracle (OTO) framework and implements Triplet
-Max-Cut (TMC), a graph-partitioning reconstruction algorithm for noisy, sparse,
-and homoplasy-prone molecular barcodes.
+Max-Cut (TMC), a recursive graph-partitioning reconstruction algorithm for noisy,
+sparse, and homoplasy-prone molecular barcodes.
 
 The code uses the Cassiopeia lineage tracing framework from Yosef Lab:
 <https://github.com/YosefLab/Cassiopeia>.
@@ -38,7 +38,6 @@ The code uses the Cassiopeia lineage tracing framework from Yosef Lab:
 |   |-- algorithm_performance.ipynb
 |   |-- algorithm_performancev2.ipynb
 |   |-- figure-6.ipynb
-|   |-- parameter_sensitivity.ipynb
 |   |-- validate_bounds.ipynb
 |   `-- violin_plot.ipynb
 |-- results/
@@ -83,11 +82,12 @@ pip install -e ".[dev]"
 
 - `triplet_lineage.simulation`: complete binary and asynchronous topology
   simulators, Cas9 mutation overlays, and missing-data simulations.
-- `triplet_lineage.reconstruction`: TMC graph construction, Max-Cut partitioning,
-  Shared Mutation Joining, and percolation baselines.
+- `triplet_lineage.reconstruction`: triplet extraction, signed graph
+  construction, exact small-graph Max-Cut, recursive TMC reconstruction, Shared
+  Mutation Joining, and percolation baselines.
 - `triplet_lineage.metrics`: triplet accuracy and Robinson-Foulds evaluation.
-- `triplet_lineage.theory`: OTO sample-complexity and delta-star helper
-  functions.
+- `triplet_lineage.theory`: OTO/TMC accuracy bounds, admissible triplet-error
+  inversion, binomial reliability calculations, and site-complexity helpers.
 - `triplet_lineage.plotting`: journal-style matplotlib defaults and shared color
   palette.
 
@@ -106,22 +106,44 @@ Recommended reproduction order:
    in `results/`.
 2. Run `notebooks/validate_bounds.ipynb` to compare empirical accuracy with the
    OTO and ITO theoretical limits.
-3. Run `notebooks/violin_plot.ipynb` and `notebooks/figure-6.ipynb` to
+3. Run `notebooks/algorithm_performancev2.ipynb` to estimate empirical recording
+   capacity and reliability curves.
+4. Run `notebooks/violin_plot.ipynb` and `notebooks/figure-6.ipynb` to
    regenerate the publication figures in `figures/`.
 
 The precomputed CSV files in `results/` are included so that plotting notebooks
 can be run without repeating the full simulation sweep.
+
+## Suggested Validation Extensions
+
+The unit tests intentionally remain lightweight. For manuscript validation,
+prefer notebook or script-level experiments that can run for longer and save
+summary CSV files:
+
+- **Recursive TMC ablation:** compare recursive TMC against a single-level
+  Max-Cut split followed by Shared Mutation Joining to isolate the effect of the
+  recursive top-down step used in the manuscript.
+- **Dropout stress test:** sweep `p_miss` from 0.0 to 0.3 and report both triplet
+  accuracy and normalized RF similarity, matching the manuscript reliability
+  claims.
+- **Triplet abstention analysis:** vary the `min_signal_gap` threshold in
+  `infer_triplets_from_mutations` and report coverage versus accuracy for
+  resolvable triplets.
+- **Theory-to-simulation calibration:** use `triplet_lineage.theory` to compute
+  OTO/TMC lower bounds and overlay them with empirical mean and confidence
+  intervals from repeated simulations.
 
 ## Testing
 
 Run the lightweight test suite from the repository root:
 
 ```bash
-python -m unittest discover -s tests
+python -m unittest discover -s tests -v
 ```
 
 The tests cover package import behavior, theoretical helper functions, plotting
-utilities, and the TMC triplet graph construction. Tests that require optional
+utilities, repository hygiene, triplet graph construction, dropout-aware triplet
+inference, and recursive TMC reconstruction. Tests that require optional
 scientific dependencies are skipped automatically when those dependencies are not
 installed.
 
